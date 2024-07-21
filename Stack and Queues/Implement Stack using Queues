@@ -1,0 +1,25 @@
+class MyStack {
+public:
+    queue<int> ip, op;
+    MyStack() {}
+
+    void push(int x) { ip.push(x); }
+
+    int pop() {
+        while (!ip.empty() && ip.size() > 1) {
+            op.push(ip.front());
+            ip.pop();
+        }
+        int x = ip.front();
+        ip.pop();
+        while (!op.empty()) {
+            ip.push(op.front());
+            op.pop();
+        }
+        return x;
+    }
+
+    int top() { return ip.back(); }
+
+    bool empty() { return ip.empty(); }
+};
