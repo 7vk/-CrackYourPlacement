@@ -1,0 +1,13 @@
+class Solution {    
+  public:
+    int findPair(int n, int x, vector<int> &arr) {
+        unordered_set<int> s;
+        for(int i=0;i<n;i++){
+            if(s.count(arr[i]-x)==1 || s.count(arr[i]+x)==1){
+                return 1;
+            }
+            s.insert(arr[i]);
+        }
+        return -1;
+    }
+};
