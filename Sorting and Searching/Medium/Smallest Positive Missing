@@ -1,0 +1,20 @@
+class Solution
+{
+    public:
+    //Function to find the smallest positive number missing from the array.
+    int missingNumber(int arr[], int n) 
+    { 
+        unordered_set<int> s;
+        int maxi=INT_MIN;
+        sort(arr,arr+n);
+        for(int i=0;i<n;i++){
+            maxi=max(maxi,arr[i]);
+            s.insert(arr[i]);
+        }
+        for(int i=1;i<maxi;i++){
+            if(s.count(i)==0) return i;
+        }
+        if(maxi>0) return maxi+1;
+        else return 1;
+    } 
+};
